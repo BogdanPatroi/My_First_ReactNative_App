@@ -1,0 +1,6 @@
+module Pods_myfirstreactnativeapp {
+  umbrella header "Pods-myfirstreactnativeapp-umbrella.h"
+
+  export *
+  module * { export * }
+}
