@@ -8,11 +8,13 @@ export default function App() {
 
   const [count, setCount] = useState(0);
   const [value, setValue] = useState('');
+  const [jokes, setJokes] = useState([]);
 
   useEffect(() => {
     //  document.title = `You clicked ${count} times`;
-    console.log(count);
-    console.log(value);
+    console.log('count:', count);
+    console.log('value:', value);
+    console.log('jokes:', jokes);
   });
 
   return (
@@ -28,6 +30,8 @@ export default function App() {
       <Input 
         value={value}
         onChange={(value) => setValue(value)}
+        // props
+        updateJokes={(jokes) => setJokes(jokes)}
       />
 
       {/* implementation of a button */}

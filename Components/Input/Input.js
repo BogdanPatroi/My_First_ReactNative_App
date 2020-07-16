@@ -13,8 +13,10 @@ export default class Input extends React.Component {
         // ex: { flower: 'part of a plant' }
         .then((response) => { return response.json() })
         // once info is given, we want to update our parents state
-        // then, share this data
-        .then((data) => console.log('data', data))
+        // then, share this data via our parent state
+        // single source
+        // .then((data) => console.log('data', data))
+        .then((data) => this.props.updateJokes(data.value))
     }
 
     render() {
