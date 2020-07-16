@@ -2,13 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
+import Input from './Components/Input/Input';
+
 export default function App() {
 
   const [count, setCount] = useState(0);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     //  document.title = `You clicked ${count} times`;
     console.log(count);
+    console.log(value);
   });
 
   return (
@@ -20,6 +24,12 @@ export default function App() {
     //                 "container" being just a name, like class names in CSS
     // cool!
     <View style={styles.container}>
+      {/* something to type content in */}
+      <Input 
+        value={value}
+        onChange={(value) => setValue(value)}
+      />
+
       {/* implementation of a button */}
       <TouchableHighlight
       onPress={ () => setCount(count + 1)}
@@ -27,7 +37,7 @@ export default function App() {
         <Text>Click/Press</Text>
       </TouchableHighlight>
       <Text> You clicked {count} times ! </Text>
-      
+
       {/* experiment with style  */}
       <Text style={styles.experiment}>style experiment</Text>
       <StatusBar style="auto" />
@@ -39,7 +49,7 @@ export default function App() {
 const styles = StyleSheet.create({
   // container style, dha
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -47,9 +57,11 @@ const styles = StyleSheet.create({
   // experiment
   experiment: {
     backgroundColor: '#f0f',
+    margin: 50,
   },
   // button style
   button: {
-    height: 50,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
 });
