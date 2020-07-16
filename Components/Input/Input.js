@@ -4,6 +4,19 @@ import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-nat
 
 export default class Input extends React.Component {
 
+    fetchData() {
+        console.log('input value:', this.props.value);
+        // string concatination is comining two strings
+        // concatinate a sstatic string with a dynamic value
+        fetch(`http://api.icndb.com/jokes/random/${this.props.value}`)
+        // json - js object notation, get data and make it to a type the comp understands
+        // ex: { flower: 'part of a plant' }
+        .then((response) => { return response.json() })
+        // once info is given, we want to update our parents state
+        // then, share this data
+        .then((data) => console.log('data', data))
+    }
+
     render() {
         // return data, i.e result of executing function
 
@@ -19,6 +32,18 @@ export default class Input extends React.Component {
                     // text will be what we type in
                     onChangeText={(text) => this.props.onChange(text)}
                 />
+                <TouchableHighlight
+                    style={styles.button}
+                    onPress={() => this.fetchData()}
+                >
+                    <Text
+                        style={styles.text}
+                    > Search </Text>
+
+                </TouchableHighlight>
+                <Text>
+                    The value of the input is: {this.props.value}
+                </Text>
             </View>
 
         )
@@ -32,12 +57,25 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
-        
+
     },
     input: {
         height: 40,
         width: 300,
         borderColor: 'gray',
         borderWidth: 2,
-    }
+    },
+    button: {
+        backgroundColor: 'blue',
+        height: 40,
+        width: 100,
+        borderColor: 'gray',
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+
+    },
+    text: {
+        color: 'white',
+    },
 })
