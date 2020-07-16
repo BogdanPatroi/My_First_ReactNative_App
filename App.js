@@ -1,20 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
 export default function App() {
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    //  document.title = `You clicked ${count} times`;
+    console.log(count);
+  });
+
   return (
     // apparently, to stylize the syntax is like:
     // style = {styles.container}
     // 1. style => attribute for style
-    // 2. styles => a kind of variable
-    // 3. container => contains the styling rules for the respective element
+    // 2. styles => an object (kind of a style.css)
+    // 3. container => a key witch contains values (the styling rules) for the respective element
     //                 "container" being just a name, like class names in CSS
     // cool!
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* implementation of a button */}
+      <TouchableHighlight
+      onPress={ () => setCount(count + 1)}
+      style= {styles.button}>
+        <Text>Click/Press</Text>
+      </TouchableHighlight>
+      <Text> You clicked {count} times ! </Text>
+      
       {/* experiment with style  */}
-      <Text style={styles.experiment}>experiment</Text>
+      <Text style={styles.experiment}>style experiment</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -33,5 +48,8 @@ const styles = StyleSheet.create({
   experiment: {
     backgroundColor: '#f0f',
   },
-  // lol, it works!! 
+  // button style
+  button: {
+    height: 50,
+  },
 });
