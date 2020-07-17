@@ -25,7 +25,7 @@ export default class Input extends React.Component {
         // instance is once instance/child of class with specific attribute called props
         return (
             <View style={styles.container}>
-                <Text>Input Component</Text>
+                <Text>Insert a number</Text>
                 <TextInput
                     keyboardType={"numeric"}
                     value={this.props.value}
@@ -55,13 +55,14 @@ export default class Input extends React.Component {
 // optimised styling
 const styles = StyleSheet.create({
     container: {
-        margin: 50,
+        margin: 10,
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
 
     },
     input: {
+        margin: 10,
         height: 40,
         width: 300,
         borderColor: 'gray',
